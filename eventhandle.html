@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    
+    <div id="example-1">
+        <button v-on:click="counter += 1">Add 1</button>
+        <p>위 버튼을 클릭한 횟수는 {{ counter }} 번 입니다.</p>
+    </div>
+
+    <div id="example-2">
+        <button v-on:click="greet">Greet</button>
+    </div>
+
+    <div id="example-3">
+        <button v-on:click="say('hi')">Say hi</button>
+        <button v-on:click="say('what')">Say what</button>
+        <button v-on:click="warn('Form cannot be submitted yet.', $event)">
+            Submit
+        </button>
+
+        <!-- 클릭 이벤트 전파가 중단됩니다 -->
+        <a v-on:click.stop="doThis"></a>
+
+        <!-- 제출 이벤트가 페이지를 다시 로드 하지 않습니다 -->
+        <form v-on:submit.prevent="onSubmit"></form>
+
+        <!-- 수식어는 체이닝 가능합니다 -->
+        <a v-on:click.stop.prevent="doThat"></a>
+
+        <!-- 단순히 수식어만 사용할 수 있습니다 -->
+        <form v-on:submit.prevent></form>
+
+        <!-- 이벤트 리스너를 추가할 때 캡처모드를 사용합니다 -->
+        <!-- 즉, 내부 엘리먼트를 대상으로 하는 이벤트가 해당 엘리먼트에서 처리되기 전에 여기서 처리합니다. -->
+        <div v-on:click.capture="doThis">...</div>
+
+        <!-- 클릭 이벤트는 최대 한번만 트리거 됩니다. -->
+        <a v-on:click.once="doThis"></a>
+
+        <!-- 스크롤의 기본 이벤트를 취소할 수 없습니다. -->
+        <div v-on:scroll.passive="onScroll">...</div>
+
+        <!-- 
+        관련 코드가 동일한 순서로 생성되므로 수식어를 사용할 때 순서를 지정하세요.
+        다시말해 `v-on:click.prevent.self`를 사용하면 **모든 클릭**을 막을 수 있으며
+        `v-on:click.self.prevent`는 엘리먼트 자체에 대한 클릭만 방지합니다.
+        -->
+
+        <!-- only call `vm.submit()` when the `key` is `Enter` -->
+        <input v-on:keyup.enter="submit">
+
+        <!-- KeyboardEvent.key -->
+        <input v-on:keyup.page-down="onPageDown">
+
+        <!-- Alt 또는 Shift와 함께 눌린 경우에도 실행됩니다. -->
+        <button @click.ctrl="onClick">A</button>
+
+    </div>
+
+</body>
+
+<script src="eventhandle.js"></script>
+
+</html>

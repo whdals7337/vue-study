@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        <input v-model="message" placeholder="여기를 수정해보세요">
+        <p>메시지: {{ message }}</p>
+
+        <span>여러 줄을 가지는 메시지:</span>
+        <p style="white-space: pre-line">{{ longMessage }}</p>
+        <br>
+        <textarea v-model="longMessage" placeholder="여러줄을 입력해보세요"></textarea>
+        
+        <br>
+        <input v-model.number="age" type="number">
+
+        <br>
+        <input v-model.trim="msg">
+
+
+    </div>
+
+    <br>
+
+    <div id='example-3'>
+        <input type="checkbox" id="checkbox" v-model="checked">
+        <label for="checkbox">{{ checked }}</label>
+
+        <br>
+
+        <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+        <label for="jack">Jack</label>
+        <input type="checkbox" id="john" value="John" v-model="checkedNames">
+        <label for="john">John</label>
+        <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+        <label for="mike">Mike</label>
+        <br>
+        <span>체크한 이름: {{ checkedNames }}</span>
+
+        <br>
+
+        <input type="radio" id="one" value="One" v-model="picked">
+        <label for="one">One</label>
+        <br>
+        <input type="radio" id="two" value="Two" v-model="picked">
+        <label for="two">Two</label>
+        <br>
+        <span>선택: {{ picked }}</span>
+
+        <br>
+
+        <input
+        type="checkbox"
+        v-model="toggle"
+        true-value="yes"
+        false-value="no"
+        >
+
+        <br>
+
+        <input type="radio" v-model="pick" v-bind:value="a">
+
+    </div>
+
+    <br>
+
+    <div id='example-4'>
+
+        <select v-model="selected">
+            <option disabled value="">Please select one</option>
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+        </select>
+        <span>선택함: {{ selected }}</span>
+
+        <br>
+
+        <select v-model="forSelected">
+            <option v-for="option in options" v-bind:value="option.value">
+              {{ option.text }}
+            </option>
+        </select>
+        <span>Selected: {{ forSelected }}</span>
+
+        <select v-model="selected">
+            <!-- inline object literal -->
+            <option v-bind:value="{ number: 123 }">123</option> 
+            <!-- 
+                typeof vm.selected // -> 'object'
+                vm.selected.number // -> 123
+             -->
+        </select>
+    </div>
+
+
+
+    
+
+</body>
+
+<script src="formbinding.js"></script>
+
+</html>
